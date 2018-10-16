@@ -1,25 +1,38 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+import OverlayTrigger from 'react-bootstrap/lib/OverlayTrigger';
+import Popover from 'react-bootstrap/lib/Popover';
+import Button from 'react-bootstrap/lib/Button';
+
+const popover = (
+  <Popover id="test-popover-2" title="This is the title 2">
+    Hello!
+  </Popover>
+);
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <OverlayTrigger
+          trigger="click"
+          placement="bottom"
+          overlay={(
+            <Popover id="test-popover-1" title="This is the title 1">
+              Hello!
+            </Popover>
+          )}
+        >
+          <Button>Push Me</Button>
+        </OverlayTrigger>
+        <OverlayTrigger
+          trigger="click"
+          placement="bottom"
+          overlay={popover}
+        >
+          <Button>Push Me</Button>
+        </OverlayTrigger>
       </div>
     );
   }
